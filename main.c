@@ -1,17 +1,8 @@
 #include<stdio.h>
-
-struct books{
-    int id;
-    char bookName[40];
-    int issued;
-    int available;
-};
-
-struct students{
-    int stdid;
-    int issuedBooks[4];
-    char stdName[20];
-};
+#include <stdlib.h>
+#include <string.h>
+#include "sll.h"
+#include "hash.h"
 
 struct admin{
     int adid;
@@ -20,31 +11,96 @@ struct admin{
 };
 
 int modeInput();
+void initialize_lib(books **b);
+int adminOptions(books **b);
+
+/*
+void displayBooks(books * b){
+    /*books *temp = b;
+    while(temp != NULL){
+        printf("%d\n",temp->id);
+        temp = temp->next;
+    }
+    books *ptr;
+    ptr = b;
+            while(ptr!=NULL){
+            printf("\n\t_________________________________________________\n");
+            // printf("\n\t Book %d",i);
+            // printf("\n\t Book Title: %s",ptr->name);
+            // printf("\n\t Name of Author: %s",ptr->author);
+            printf("\n\t Book ID: %d",ptr->id);
+            printf("\n\t_________________________________________________\n");
+            ptr=ptr->next;
+            // i++;
+        }
+}*/
+
+/*void displaystdinfo(students *s)
+
+*/ 
 
 int main()
 {
-    struct books b[5];
-    b[0].id=1; b[0].bookName="brfvn"; b[0].issued=0; b[0].available=10;
-    b[1].id=2; b[1].bookName="drfgthh"; b[1].issued=0; b[1].available=10;
-    b[2].id=3; b[2].bookName="hiopfsw"; b[2].issued=0; b[2].available=10;
-    b[3].id=4; b[3].bookName="nmjtex"; b[3].issued=0; b[3].available=10;
-    b[4].id=5; b[4].bookName="giiuscn"; b[4].issued=0; b[4].available=10;
-    
-    struct students s[100];
+    books * b = NULL;
+    initialize_lib(&b);
+    students * std[100] = NULL;             //a is hash table
 
-    int ch = modeInput();
-    switch(ch)
+    while(1)
     {
-        case 1: adminOptions();
-                break;
-            
-        case 2: studentOptions(&s);
-                break;
+        int ch = modeInput();
+        switch(ch)
+        {
+            case 1: adminOptions(&b);
+                    break;
+                
+            case 2: studentOptions(&std,&b);
+                    break;
 
-        default: printf("Invalid Choice!\n");
+            case 3: exit(1);
+
+            default: printf("Invalid Choice!\n");
+                    break;
+        }
     }
-
     return 0;
+}
+
+int adminOptions(books **b)                // 1 for inserting book and 2 for printing data of books.
+{                                          // 2 functions are specified here, if you want to add any other function in adminOptions than extend this cases :)
+    int ch2;
+    while(1)
+    {
+        printf("Enter admin op: ");
+        scanf("%d",&ch2);
+        switch(ch2)
+        {
+            case 1: insertAtEnd(b,1);
+                    break;
+                
+            case 2: display(*b);
+                    break;
+
+            case 3: return 1;
+
+            default: break;
+        }
+    }
+    return 0;
+}
+
+void studentOptions(students *std, books *b)         // Active
+{
+    while(1)
+    {
+        int ch1;
+        printf("Enter choice: ");
+        scanf("%d",ch1);
+        
+        switch(ch2)
+        {
+            case 1: 
+        }
+    }
 }
 
 int modeInput()
@@ -55,12 +111,7 @@ int modeInput()
     return i;
 }
 
-int adminOptions()              // Incomplete
-{
-
-}
-
-int studentOptions(struct students *s[])    // Incomplete
+/* int studentOptions(struct students *s[])    // Incomplete
 {
     int ch1;
     char name1[20];
@@ -86,4 +137,4 @@ int studentOptions(struct students *s[])    // Incomplete
 
         default: printf("Invalid Case!");
     }
-}
+}*/
