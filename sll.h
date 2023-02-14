@@ -127,7 +127,7 @@ void insertAtEnd( books** head,int d){
         printf("Cannot insert the element at end\n");
     }
     else
-        printf("Node inserted at end\n");
+        printf("Book inserted.\n\n");
     newNode->data=d;
     newNode->link=NULL;
     

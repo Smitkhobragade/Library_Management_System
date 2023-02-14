@@ -14,6 +14,8 @@ struct admin{
 int modeInput();
 void initialize_lib(books **b);
 int adminOptions(books **b);
+void initialize_std(students *a[]);
+int studentOptions(students *std[], books **b) ;        
 
 /*
 void displayBooks(books * b){
@@ -43,8 +45,9 @@ void displayBooks(books * b){
 int main()
 {
     books * b = NULL;
+    students * std[100];             //a is hash table
     initialize_lib(&b);
-    // students * std[100] = NULL;             //a is hash table
+    initialize_std(std);
 
     while(1)
     {
@@ -54,8 +57,8 @@ int main()
             case 1: adminOptions(&b);
                     break;
                 
-            // case 2: studentOptions(&std,&b);
-            //         break;
+            case 2: studentOptions(std,&b);
+                    break;
 
             case 3: exit(1);
 
@@ -71,7 +74,7 @@ int adminOptions(books **b)                // 1 for inserting book and 2 for pri
     int ch2;
     while(1)
     {
-        printf("Enter admin op: ");
+        printf("\n\n------------Admin Menu------------\nEnter operation no.: ");
         scanf("%d",&ch2);
         switch(ch2)
         {
@@ -89,53 +92,51 @@ int adminOptions(books **b)                // 1 for inserting book and 2 for pri
     return 0;
 }
 
-// void studentOptions(students *std, books *b)         // Active
-// {
-//     while(1)
-//     {
-//         int ch1;
-//         printf("Enter choice: ");
-//         scanf("%d",ch1);
+int studentOptions(students *std[], books **b)         // Active
+{
+    int stdid2,bid2;
+    while(1)
+    {
+        int ch2;
+        printf("\n\n------------Student Menu------------\nEnter operation no.: ");
+        scanf("%d",&ch2);
         
-//         switch(ch2)
-//         {
-//             case 1: 
-//         }
-//     }
-//}
+        switch(ch2)
+        {
+            case 1: printf("Enter your id: ");              // Issue Book
+                    scanf("%d",&stdid2);
+                    printf("Enter book id to be issued: ");
+                    scanf("%d",&bid2);
+                    issueBook(std,stdid2,bid2);
+                    break;
+                
+            case 2: printf("Enter your id: ");              // Return Book
+                    scanf("%d",&stdid2);
+                    printf("Enter book id to be returned: ");
+                    scanf("%d",&bid2);
+                    returnBook(std,stdid2,bid2);
+                    break;
+
+            case 3: return 1;
+
+            default: break;
+        }
+    }
+}
 
 int modeInput()
 {
     int i;
-    printf("Enter 1 for Admin.\nEnter 2 for Student.\n");
+    printf("\n\n------------Main Menu------------\nEnter 1 for Admin.\nEnter 2 for Student.\n");
     scanf("%d",&i);
     return i;
 }
 
-/* int studentOptions(struct students *s[])    // Incomplete
+void initialize_std(students *a[])
 {
-    int ch1;
-    char name1[20];
-    int id1;
-    char bn[40];
+    a[0] = NULL;
 
-    printf("Enter your Name: ");
-    scanf("%s",name1);
-    printf("Enter your ID no.: ");
-    scanf("%d",&id1);
-    printf("Enter 1 to issue book.\nEnter 2 to return book.\nEnter 3 to view fine.\n");
-    scanf("%d",&ch1);
-
-    switch(ch1)
-    {
-        case 1: printf("Enter book name: ");
-                scanf("%s",bn);
-                issueBookStd(s[],bn);
-                break;
-
-        case 2: returnBookStd();
-                break;
-
-        default: printf("Invalid Case!");
-    }
-}*/
+    addStd(a,56,"Sahil");
+    addStd(a,64,"Smit");
+    addStd(a,62,"Shreyash");
+}
