@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "sll.h"
+#define capacity 100
 #include "hash.h"
 
 struct admin{
