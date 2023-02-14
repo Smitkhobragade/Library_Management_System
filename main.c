@@ -42,6 +42,8 @@ void displayBooks(books * b){
 
 int main()
 {
+    students * a[capacity];
+
     books * b = NULL;
     initialize_lib(&b);
     students * std[100] = NULL;             //a is hash table
@@ -89,20 +91,6 @@ int adminOptions(books **b)                // 1 for inserting book and 2 for pri
     return 0;
 }
 
-void studentOptions(students *std, books *b)         // Active
-{
-    while(1)
-    {
-        int ch1;
-        printf("Enter choice: ");
-        scanf("%d",ch1);
-        
-        switch(ch2)
-        {
-            case 1: 
-        }
-    }
-}
 
 int modeInput()
 {
@@ -139,3 +127,6 @@ int modeInput()
         default: printf("Invalid Case!");
     }
 }*/
+int studentOptions(struct students *a[]){
+
+}

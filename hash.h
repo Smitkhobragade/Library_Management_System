@@ -2,6 +2,7 @@
 typedef struct student{
     int stdid;
     int issuedBooks[4]; //contains id of issued books
+    int issuedate[4];
     char stdName[20];
     struct student * link;
 }students;
@@ -72,14 +73,17 @@ int issueBook(students * a[], int id, int bookid){
         int j=0;
         while(temp->issuedBooks[j]!=0)
             j++;
-        if(j>3)
+        if(j>3){
+            printf("YOU CANNOT ISSUE THE BOOK\nMAX LIMIT REACHED\n");s
             return 2; //returns 2 if max limit is reached
         else{
             temp->issuedBooks[j]=bookid;
+            printf("BOOK IS ISSUED BY THE USER\n");
             return 1; //returns 1 if book is inserted 
         }
     }
     else{
+        printf("STUDENT IS NOT IN THE LIST\n");
         return 0; //returns 0 if Student is not in data
     }
 }
@@ -93,14 +97,17 @@ int returnBook(students * a[], int id, int bookid){
                 j++;
             }
         if(j<=3){
-            if(temp->issuedBooks[j]!=bookid)
+            if(temp->issuedBooks[j]!=bookid){
+                printf("BOOK IS NOT ISSUED BY THE USER\n");
                 return 0;//returns 2 if the book is not present
+            }
             else{
                 while(j<3){
                     temp->issuedBooks[j]=temp->issuedBooks[j+1];
                     j++;
                 }
                 temp->issuedBooks[j]=0;
+                printf("BOOK HAS BEEN RETURNED");
                 return 1; //returns 1 if book is present in data
             }
         }
