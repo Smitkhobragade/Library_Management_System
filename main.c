@@ -43,7 +43,7 @@ int main()
 {
     books * b = NULL;
     initialize_lib(&b);
-    students * std[100] = NULL;             //a is hash table
+    // students * std[100] = NULL;             //a is hash table
 
     while(1)
     {
@@ -53,8 +53,8 @@ int main()
             case 1: adminOptions(&b);
                     break;
                 
-            case 2: studentOptions(&std,&b);
-                    break;
+            // case 2: studentOptions(&std,&b);
+            //         break;
 
             case 3: exit(1);
 
@@ -88,20 +88,20 @@ int adminOptions(books **b)                // 1 for inserting book and 2 for pri
     return 0;
 }
 
-void studentOptions(students *std, books *b)         // Active
-{
-    while(1)
-    {
-        int ch1;
-        printf("Enter choice: ");
-        scanf("%d",ch1);
+// void studentOptions(students *std, books *b)         // Active
+// {
+//     while(1)
+//     {
+//         int ch1;
+//         printf("Enter choice: ");
+//         scanf("%d",ch1);
         
-        switch(ch2)
-        {
-            case 1: 
-        }
-    }
-}
+//         switch(ch2)
+//         {
+//             case 1: 
+//         }
+//     }
+//}
 
 int modeInput()
 {
