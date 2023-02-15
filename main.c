@@ -19,7 +19,7 @@ int studentOptions(students *std[], books **b) ;
 
 /*
 void displayBooks(books * b){
-    /*books *temp = b;
+    books *temp = b;
     while(temp != NULL){
         printf("%d\n",temp->id);
         temp = temp->next;
@@ -45,7 +45,9 @@ void displayBooks(books * b){
 int main()
 {
     books * b = NULL;
-    students * std[100];             //a is hash table
+    students * std[100];
+    for(int j=0;j<capacity; j++)
+        std[j]=NULL;             //a is hash table
     initialize_lib(&b);
     initialize_std(std);
 
@@ -107,14 +109,14 @@ int studentOptions(students *std[], books **b)         // Active
                     scanf("%d",&stdid2);
                     printf("Enter book id to be issued: ");
                     scanf("%d",&bid2);
-                    issueBook(std,stdid2,bid2);
+                    issueBook(std,b,stdid2,bid2);
                     break;
                 
             case 2: printf("Enter your id: ");              // Return Book
                     scanf("%d",&stdid2);
                     printf("Enter book id to be returned: ");
                     scanf("%d",&bid2);
-                    returnBook(std,stdid2,bid2);
+                    returnBook(std,b,stdid2,bid2);
                     break;
 
             case 3: return 1;
@@ -134,7 +136,7 @@ int modeInput()
 
 void initialize_std(students *a[])
 {
-    a[0] = NULL;
+    // a[0] = NULL;
 
     addStd(a,56,"Sahil");
     addStd(a,64,"Smit");

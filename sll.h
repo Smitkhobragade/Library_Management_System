@@ -94,6 +94,7 @@ void display(books * head){
             printf(" ID is : --> %d \n",head->id);
             printf("Book name --> %s \n",head->bookName);
             printf("books available --> %d \n",head->available);
+            printf("Books issued: %d",head->issued);
             head=head->link;
             printf("\n----------------------------\n");
         }
