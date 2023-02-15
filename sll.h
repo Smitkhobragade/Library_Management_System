@@ -103,7 +103,7 @@ void display(books *head)
         while (head != NULL)
         {
             printf("\n----------BOOK -------------\n");
-            printf(" ID is : --> %d \n", head->id);
+            printf("ID is : --> %d \n", head->id);
             printf("Book name --> %s \n", head->bookName);
             printf("books available --> %d \n", head->available);
             printf("Books issued: %d", head->issued);
@@ -122,6 +122,7 @@ void input_data(books **head1)
     scanf("%s", &((*head1)->bookName));
     printf("Enter available books : ");
     scanf("%d", &((*head1)->available));
+    ((*head1)->issued) = 0;
 }
 
 void createNode(books **head1)

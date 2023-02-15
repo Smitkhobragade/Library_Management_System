@@ -19,42 +19,17 @@ void initialize_std(students *a[]);
 int studentOptions(students *std[], books **b);
 int pay_fine(int d1, int m1, int y1, int d2, int m2, int y2);
 
-/*
-void displayBooks(books * b){
-    books *temp = b;
-    while(temp != NULL){
-        printf("%d\n",temp->id);
-        temp = temp->next;
-    }
-    books *ptr;
-    ptr = b;
-            while(ptr!=NULL){
-            printf("\n\t_________________________________________________\n");
-            // printf("\n\t Book %d",i);
-            // printf("\n\t Book Title: %s",ptr->name);
-            // printf("\n\t Name of Author: %s",ptr->author);
-            printf("\n\t Book ID: %d",ptr->id);
-            printf("\n\t_________________________________________________\n");
-            ptr=ptr->next;
-            // i++;
-        }
-}*/
-
-/*void displaystdinfo(students *s)
-
-*/
-
 int main()
 {
     books *b = NULL;
     students *std[100];
     for (int j = 0; j < capacity; j++)
         std[j] = NULL; // a is hash table
-    // initialize_lib(&b);
+    initialize_lib(&b);
     initialize_std(std);
-    // display_students(std);
-    pay_fine(25, 1, 2023, 4, 2, 2023);
-    pay_fine(1, 1, 2023, 1, 2, 2023);
+    display_students(std);
+    // pay_fine(25, 1, 2023, 4, 2, 2023);
+    // pay_fine(1, 1, 2023, 1, 2, 2023);
 
     while (1)
     {
