@@ -14,9 +14,10 @@ struct admin
 
 int modeInput();
 void initialize_lib(books **b);
-int adminOptions(books **b);
+int adminOptions(students *std[], books **b);
 void initialize_std(students *a[]);
 int studentOptions(students *std[], books **b);
+int pay_fine(int d1, int m1, int y1, int d2, int m2, int y2);
 
 /*
 void displayBooks(books * b){
@@ -51,7 +52,9 @@ int main()
         std[j] = NULL; // a is hash table
     // initialize_lib(&b);
     initialize_std(std);
-    display_students(std);
+    // display_students(std);
+    pay_fine(25, 1, 2023, 4, 2, 2023);
+    pay_fine(1, 1, 2023, 1, 2, 2023);
 
     while (1)
     {
@@ -59,7 +62,7 @@ int main()
         switch (ch)
         {
         case 1:
-            adminOptions(&b);
+            adminOptions(std, &b);
             break;
 
         case 2:
@@ -77,8 +80,8 @@ int main()
     return 0;
 }
 
-int adminOptions(books **b) // 1 for inserting book and 2 for printing data of books.
-{                           // 2 functions are specified here, if you want to add any other function in adminOptions than extend this cases :)
+int adminOptions(students *std[], books **b) // 1 for inserting book and 2 for printing data of books.
+{                                            // 2 functions are specified here, if you want to add any other function in adminOptions than extend this cases :)
     int ch2;
     while (1)
     {
@@ -95,7 +98,10 @@ int adminOptions(books **b) // 1 for inserting book and 2 for printing data of b
             break;
 
         case 3:
-            return 1;
+            display_students(std);
+            break;
+        case 4:
+            return 0;
 
         default:
             break;
@@ -156,4 +162,26 @@ void initialize_std(students *a[])
     addStd(a, 64, "Smit");
     addStd(a, 62, "Shreyash");
     addStd(a, 156, "XYZ");
+}
+
+int pay_fine(int d1, int m1, int y1, int d2, int m2, int y2)
+{
+
+    m1 = (m1 + 9) % 12;
+    y1 = y1 - m1 / 10;
+    int x1 = 365 * y1 + y1 / 4 - y1 / 100 + y1 / 400 + (m1 * 306 + 5) / 10 + (d1 - 1);
+
+    m2 = (m2 + 9) % 12;
+    y2 = y2 - m2 / 10;
+    int x2 = 365 * y2 + y2 / 4 - y2 / 100 + y2 / 400 + (m2 * 306 + 5) / 10 + (d2 - 1);
+    if ((x2 - x1) < 15)
+    {
+        printf("NO FINE \n");
+        return 0;
+    }
+
+    printf("Your Fine is : %d \n", 2 * (x2 - x1 - 14));
+
+    return 2 * (x2 - x1 - 14);
+    // 14 days from book issue
 }
