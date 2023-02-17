@@ -158,8 +158,7 @@ int returnBook(students *a[], books **b, int id, int bookid)
             {
                 while (j < 3)
                 {
-                    // temp->issuedBooks[j]=temp->issuedBooks[j+1];
-                    temp->issuedBooks[j - 1] = temp->issuedBooks[j];
+                    temp->issuedBooks[j]=temp->issuedBooks[j+1];
                     j++;
                 }
                 temp->issuedBooks[j] = 0;
