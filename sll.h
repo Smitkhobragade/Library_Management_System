@@ -99,14 +99,14 @@ void display(books *head)
         printf("The SLL is Empty\n");
     else
     {
-        printf("\nBOOKS DATA :  ");
+        printf("\nBOOKS DATA :  \n");
         while (head != NULL)
         {
-            printf("\n----------BOOK -------------\n");
-            printf("ID is : --> %d \n", head->id);
-            printf("Book name --> %s \n", head->bookName);
-            printf("books available --> %d \n", head->available);
-            printf("Books issued: %d", head->issued);
+            printf("\n----------- BOOK -----------\n");
+            printf("Book ID is : %d \n", head->id);
+            printf("Book name : %s \n", head->bookName);
+            printf("Available no. of books : %d \n", head->available);
+            printf("Books issued : %d", head->issued);
             head = head->link;
             printf("\n----------------------------\n");
         }
@@ -116,9 +116,9 @@ void display(books *head)
 
 void input_data(books **head1)
 {
-    printf("Enter ID : ");
+    printf("Enter Book ID : ");
     scanf("%d", &((*head1)->id));
-    printf("ENTER Name of Book : ");
+    printf("Enter Book Name : ");
     scanf("%s", &((*head1)->bookName));
     printf("Enter available books : ");
     scanf("%d", &((*head1)->available));

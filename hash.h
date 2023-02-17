@@ -4,7 +4,7 @@
 typedef struct student
 {
     int stdid;
-    int issuedBooks[4]; // contains id of issued books
+    int issuedBooks[4];         // contains id of issued books
     char stdName[20];
     struct student *link;
 } students;
@@ -13,9 +13,7 @@ void createS(students **head)
 {
     *head = (students *)malloc(sizeof(students));
     if (*head == NULL)
-        printf("Cannot create nodeS\n");
-    else
-        printf("Stuedent data inserted.\n");
+        printf("Unable to insert stuedent's data.\n");
 }
 
 void addStd(students *a[], int id, char name[])
@@ -121,6 +119,11 @@ int issueBook(students *a[], books **b, int id, int bookid)
                 (temp1->available)--;
                 (temp1->issued)++;
             }
+            else
+            {
+                printf("Invalid Book ID, there is no such book available in library.\n");
+                return 3;
+            }
             printf("BOOK ISSUED!\n");
             return 1; // returns 1 if book is inserted
         }
@@ -186,20 +189,34 @@ void display_students(students *a[])
     for (int i = 0; i < capacity; i++)
     {
         students *temp = a[i];
-        if (temp == NULL)
+        if (temp != NULL)
         {
-            // printf("X\n");
-        }
-        else
-        {
-
             while (temp != NULL)
             {
-                printf("\n Student Data : \n");
-                printf("---------------------\n");
-                printf("ID : %d\n", temp->stdid);
-                printf("NAME : %s\n", temp->stdName);
-                printf("ISSUED BOOKS with ID : %d %d %d %d\n", temp->issuedBooks[0], temp->issuedBooks[1], temp->issuedBooks[2], temp->issuedBooks[3]);
+                printf("\n--------- Student (ID %d) Data ---------\n",(temp->stdid));
+                printf("Student Name : %s\n", temp->stdName);
+                printf("Issued Books with ID : %d %d %d %d\n", temp->issuedBooks[0], temp->issuedBooks[1], temp->issuedBooks[2], temp->issuedBooks[3]);
+                temp = temp->link;
+            }
+        }
+    }
+}
+
+void mydata(students *a[], int myid)
+{
+    for (int i = 0; i < capacity; i++)
+    {
+        students *temp = a[i];
+        if (temp != NULL)
+        {
+            while (temp != NULL)
+            {
+                if(temp->stdid == myid)
+                {
+                    printf("\n--------- %s's Data ---------\n",(temp->stdName));
+                    printf("ID : %d\n", temp->stdid);
+                    printf("Issued Books with ID : %d %d %d %d\n", temp->issuedBooks[0], temp->issuedBooks[1], temp->issuedBooks[2], temp->issuedBooks[3]);
+                }
                 temp = temp->link;
             }
         }
