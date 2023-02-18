@@ -107,6 +107,7 @@ int adminOptions(students *std[], books **b, int dates_a[]) // 1 for inserting b
         printf("*        Enter 5 to return to Main menu.         *\n");
         printf("*                                                *\n");
         printf("**************************************************\n");
+        printf("ENTER : ");
         scanf("%d", &ch2);
         switch (ch2)
         {
