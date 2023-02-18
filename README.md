@@ -21,3 +21,7 @@ This is a command-line interface (CLI) program implemented in C for a library ma
 
 ## License
 This program is licensed under the MIT License.
+
+## Contributors 🎉✨
+- [1-Shreyash](https://github.com/1-Shreyash)
+- [sahilheadu49](https://github.com/sahilhedau49)
