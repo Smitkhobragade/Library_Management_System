@@ -3,7 +3,7 @@
 #include <string.h>
 #include "books.h"
 #define capacity 100
-#include "hash.h"
+#include "students.h"
 
 struct admin
 {
