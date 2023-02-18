@@ -89,11 +89,6 @@ students *StdExists(students *a[], int id)
 int issueBook(students *a[], books **b, int id, int bookid)
 {
     students *temp = StdExists(a, id);
-    // if ((*b)->available == 0)
-    // {
-    //     printf("These book in not available in the library to be issued!!!\n");
-    //     return 0; // book is not available to be issued
-    // }
     if (temp != NULL)
     {
         int j = 0;
@@ -116,7 +111,6 @@ int issueBook(students *a[], books **b, int id, int bookid)
             }
             if (temp1->id != bookid)
             {
-                printf("HHHHHHHHHHHHHHHHHHH\n");
                 return -3;
             }
             if (temp1->id == bookid)

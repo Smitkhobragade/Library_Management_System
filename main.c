@@ -60,14 +60,11 @@ int main()
     scanf("%d", &x);
     if (x == 1)
     {
-        printf("\nEnter 3 books info:\n\n");
-        initialize_lib(&b);
+        // printf("\nEnter 3 books info:\n\n");
+        initialize_lib1(&b);
         printf("\nStudent data inserted!\n\n");
         initialize_std(std);
     }
-    // display_students(std);
-    // pay_fine(25, 1, 2023, 4, 2, 2023);
-    // pay_fine(1, 1, 2023, 1, 2, 2023);
 
     while (1)
     {
@@ -112,7 +109,7 @@ int adminOptions(students *std[], books **b, int dates_a[]) // 1 for inserting b
         switch (ch2)
         {
         case 1:
-            insertAtEnd(b, 1);
+            insertAtEnd(b);
             break;
 
         case 2:
