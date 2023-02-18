@@ -1,17 +1,16 @@
 # Library_Management_System
 Library Management System
-This is a command-line interface (CLI) program implemented in C for a library management system. The program allows librarians to add, delete, and modify books and patrons, as well as manage borrowing and returning of books.
+This is a command-line interface (CLI) program implemented in C for a library management system. The program allows librarians to add, delete, Books and Students, as well as manage borrowing and returning of books.
 
 ## Features
 - Add new books to the library
 - Remove books from the library
-- Modify book information
-- Add new patrons to the library
-- Remove patrons from the library
-- Modify patron information
+- Add new Students to the library
+- Remove Students from the library
 - Borrow books
 - Return books
-- Search for books and patrons
+- Search for books and Students
+- Calculate fine
 
 ## Fork this repository.
 1. Create a new branch with a descriptive name git checkout -b my-new-feature.
@@ -22,3 +21,7 @@ This is a command-line interface (CLI) program implemented in C for a library ma
 
 ## License
 This program is licensed under the MIT License.
+
+## Contributors 🎉✨
+- [1-Shreyash](https://github.com/1-Shreyash)
+- [sahilheadu49](https://github.com/sahilhedau49)
