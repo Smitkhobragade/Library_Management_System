@@ -24,12 +24,13 @@ int main()
     books *b = NULL;
     students *std[100];
     for (int j = 0; j < capacity; j++)
-        std[j] = NULL; 
+        std[j] = NULL;
 
     int x;
     printf("Enter 1 to start library: ");
-    scanf("%d",&x);
-    if(x==1){
+    scanf("%d", &x);
+    if (x == 1)
+    {
         printf("\nEnter 3 books info:\n\n");
         initialize_lib(&b);
         printf("\nStudent data inserted!\n\n");
@@ -44,20 +45,20 @@ int main()
         int ch = modeInput();
         switch (ch)
         {
-            case 1:
-                adminOptions(std, &b);
-                break;
+        case 1:
+            adminOptions(std, &b);
+            break;
 
-            case 2:
-                studentOptions(std, &b);
-                break;
+        case 2:
+            studentOptions(std, &b);
+            break;
 
-            case 3:
-                exit(1);
+        case 3:
+            exit(1);
 
-            default:
-                printf("Invalid Choice!\n");
-                break;
+        default:
+            printf("Invalid Choice!\n");
+            break;
         }
     }
     return 0;
@@ -120,7 +121,7 @@ int studentOptions(students *std[], books **b)
         switch (ch2)
         {
         case 1:
-            printf("Enter your ID: ");                   // Issue Book
+            printf("Enter your ID: "); // Issue Book
             scanf("%d", &stdid2);
             printf("Enter Book ID to be issued: ");
             scanf("%d", &bid2);
@@ -128,7 +129,7 @@ int studentOptions(students *std[], books **b)
             break;
 
         case 2:
-            printf("Enter your id: ");                   // Return Book
+            printf("Enter your id: "); // Return Book
             scanf("%d", &stdid2);
             printf("Enter book id to be returned: ");
             scanf("%d", &bid2);
@@ -136,9 +137,9 @@ int studentOptions(students *std[], books **b)
             break;
 
         case 3:
-            printf("Enter your id: ");                   // Print data of student with specific ID.
+            printf("Enter your id: "); // Print data of student with specific ID.
             scanf("%d", &stdid2);
-            mydata(std,stdid2);
+            mydata(std, stdid2);
             break;
 
         case 4:

@@ -13,7 +13,7 @@ void createNode1(books **head1)
 {
     *head1 = (books *)malloc(sizeof(books));
     if (*head1 == NULL)
-        printf("Cannot create node\n");
+        printf("Cannot create BOOK\n");
     else
     {
         // printf("Node created\n");
@@ -28,10 +28,10 @@ void insertAtEnd1(books **head, int d)
     createNode1(&newNode);
     if (newNode == NULL)
     {
-        printf("Cannot insert the element at end\n");
+        printf("Cannot insert the BOOK at end\n");
     }
     else
-        printf("Node inserted at end\n");
+        printf("BOOK inserted at end\n");
     newNode->data = d;
     newNode->link = NULL;
 
@@ -96,7 +96,7 @@ int isEmpty(books *head)
 void display(books *head)
 {
     if (isEmpty(head))
-        printf("The SLL is Empty\n");
+        printf("The LIST is Empty\n");
     else
     {
         printf("\nBOOKS DATA :  \n");
@@ -129,10 +129,10 @@ void createNode(books **head1)
 {
     *head1 = (books *)malloc(sizeof(books));
     if (*head1 == NULL)
-        printf("Cannot create node\n");
+        printf("Cannot create BOOK\n");
     else
     {
-        printf("Node created\n");
+        printf("BOOK created\n");
         input_data(head1);
     }
 }
@@ -143,7 +143,7 @@ void insertAtEnd(books **head, int d)
     createNode(&newNode);
     if (newNode == NULL)
     {
-        printf("Cannot insert the element at end\n");
+        printf("Cannot insert the BOOK at end\n");
     }
     else
         printf("Book inserted.\n\n");
@@ -181,10 +181,10 @@ void insertAtBeg(books **head, int d)
     createNode(&newNode);
     if (newNode == NULL)
     {
-        printf("Cannot insert the element at beginning\n");
+        printf("Cannot insert the BOOK at beginning\n");
     }
     else
-        printf("Node inserted at beginning\n");
+        printf("BOOK inserted at beginning\n");
     newNode->link = *head;
     *head = newNode;
     newNode->data = d;
@@ -195,7 +195,7 @@ int deletefirst(books **head)
     books *temp1 = *head;
     if (isEmpty(*head))
     {
-        printf("No elements in sll to delete\n");
+        printf("No elements in LIST to delete\n");
         temp = -999;
     }
     else
@@ -212,7 +212,7 @@ int deletelast(books **head)
     books *temp = *head, *temp1;
     if (isEmpty(*head))
     {
-        printf("No elements in sll to delete\n");
+        printf("No elements in LIST to delete\n");
         t = -999;
     }
     else if (temp->link == NULL)
