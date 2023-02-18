@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "sll.h"
+#include "books.h"
 #define capacity 100
 #include "hash.h"
 
@@ -14,18 +14,47 @@ struct admin
 
 int modeInput();
 void initialize_lib(books **b);
-int adminOptions(students *std[], books **b);
+int adminOptions(students *std[], books **b, int dates_a[]);
 void initialize_std(students *a[]);
 int studentOptions(students *std[], books **b);
 int pay_fine(int d1, int m1, int y1, int d2, int m2, int y2);
+int input_dates(int a[]);
+
+int input_dates(int a[])
+{
+    printf("PLEASE INPUT ISSUE DATE\n");
+    printf("ENTER DATE : ");
+    scanf("%d", &a[0]);
+    printf("ENTER MONTH : ");
+    scanf("%d", &a[1]);
+    printf("ENTER YEAR : ");
+    scanf("%d", &a[2]);
+    printf("PLEASE INPUT RETURN DATE\n");
+    printf("ENTER DATE : ");
+    scanf("%d", &a[3]);
+    printf("ENTER MONTH : ");
+    scanf("%d", &a[4]);
+    printf("ENTER YEAR : ");
+    scanf("%d", &a[5]);
+}
 
 int main()
 {
+    int dates_a[10];
     books *b = NULL;
     students *std[100];
     for (int j = 0; j < capacity; j++)
         std[j] = NULL;
 
+    printf("\n\n");
+    printf("****************************************\n");
+    printf("*                                      *\n");
+    printf("*                                      *\n");
+    printf("*          WELCOME TO LIBRARY          *\n");
+    printf("*                                      *\n");
+    printf("*                                      *\n");
+    printf("****************************************\n");
+    printf("\n\n");
     int x;
     printf("Enter 1 to start library: ");
     scanf("%d", &x);
@@ -46,7 +75,7 @@ int main()
         switch (ch)
         {
         case 1:
-            adminOptions(std, &b);
+            adminOptions(std, &b, dates_a);
             break;
 
         case 2:
@@ -64,8 +93,8 @@ int main()
     return 0;
 }
 
-int adminOptions(students *std[], books **b) // 1 for inserting book and 2 for printing data of books and 3 for printing students data.
-{                                            // 2 functions are specified here, if you want to add any other function in adminOptions than extend this cases :)
+int adminOptions(students *std[], books **b, int dates_a[]) // 1 for inserting book and 2 for printing data of books and 3 for printing students data.
+{                                                           // 2 functions are specified here, if you want to add any other function in adminOptions than extend this cases :)
     int ch2;
     while (1)
     {
@@ -74,7 +103,8 @@ int adminOptions(students *std[], books **b) // 1 for inserting book and 2 for p
         printf("*           Enter 1 to add new book.             *\n");
         printf("*     Enter 2 to display data of all books.      *\n");
         printf("*     Enter 3 to display data of all students.   *\n");
-        printf("*        Enter 4 to return to Main menu.         *\n");
+        printf("*           Enter 4 to Calculate Fine            *\n");
+        printf("*        Enter 5 to return to Main menu.         *\n");
         printf("*                                                *\n");
         printf("**************************************************\n");
         scanf("%d", &ch2);
@@ -92,6 +122,10 @@ int adminOptions(students *std[], books **b) // 1 for inserting book and 2 for p
             display_students(std);
             break;
         case 4:
+            input_dates(dates_a);
+            pay_fine(dates_a[0], dates_a[1], dates_a[2], dates_a[3], dates_a[4], dates_a[5]);
+            break;
+        case 5:
             return 1;
 
         default:
@@ -192,11 +226,11 @@ int pay_fine(int d1, int m1, int y1, int d2, int m2, int y2)
     int x2 = 365 * y2 + y2 / 4 - y2 / 100 + y2 / 400 + (m2 * 306 + 5) / 10 + (d2 - 1);
     if ((x2 - x1) < 15)
     {
-        printf("NO FINE \n");
+        printf("---------- NO FINE ----------\n");
         return 0;
     }
 
-    printf("Your Fine is : %d \n", 2 * (x2 - x1 - 14));
+    printf("----- Your Fine is : Rs. %d  -----\n", 2 * (x2 - x1 - 14));
 
     return 2 * (x2 - x1 - 14);
     // 14 days from book issue

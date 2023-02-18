@@ -4,7 +4,7 @@
 typedef struct student
 {
     int stdid;
-    int issuedBooks[4];         // contains id of issued books
+    int issuedBooks[4]; // contains id of issued books
     char stdName[20];
     struct student *link;
 } students;
@@ -158,7 +158,7 @@ int returnBook(students *a[], books **b, int id, int bookid)
             {
                 while (j < 3)
                 {
-                    temp->issuedBooks[j]=temp->issuedBooks[j+1];
+                    temp->issuedBooks[j] = temp->issuedBooks[j + 1];
                     j++;
                 }
                 temp->issuedBooks[j] = 0;
@@ -192,7 +192,7 @@ void display_students(students *a[])
         {
             while (temp != NULL)
             {
-                printf("\n--------- Student (ID %d) Data ---------\n",(temp->stdid));
+                printf("\n--------- Student (ID %d) Data ---------\n", (temp->stdid));
                 printf("Student Name : %s\n", temp->stdName);
                 printf("Issued Books with ID : %d %d %d %d\n", temp->issuedBooks[0], temp->issuedBooks[1], temp->issuedBooks[2], temp->issuedBooks[3]);
                 temp = temp->link;
@@ -210,9 +210,9 @@ void mydata(students *a[], int myid)
         {
             while (temp != NULL)
             {
-                if(temp->stdid == myid)
+                if (temp->stdid == myid)
                 {
-                    printf("\n--------- %s's Data ---------\n",(temp->stdName));
+                    printf("\n--------- %s's Data ---------\n", (temp->stdName));
                     printf("ID : %d\n", temp->stdid);
                     printf("Issued Books with ID : %d %d %d %d\n", temp->issuedBooks[0], temp->issuedBooks[1], temp->issuedBooks[2], temp->issuedBooks[3]);
                 }
