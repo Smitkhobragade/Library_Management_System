@@ -5,7 +5,6 @@ typedef struct books
 {
     int id;
     char bookName[40];
-    int data;
     int issued;
     int available;
     struct books *link;
@@ -17,15 +16,10 @@ void createNode1(books **head1)
     *head1 = (books *)malloc(sizeof(books));
     if (*head1 == NULL)
         printf("Cannot create BOOK\n");
-    else
-    {
-        // printf("Node created\n");
-        // input_data(head1);
-    }
 }
 
 // for inititalising lib finction
-void insertAtEnd1(books **head, int d)
+books * insertAtEnd1(books **head,int bookid)
 {
     books *newNode;
     createNode1(&newNode);
@@ -35,7 +29,8 @@ void insertAtEnd1(books **head, int d)
     }
     else
         printf("BOOK inserted at end\n");
-    newNode->data = d;
+
+    newNode->id=bookid;
     newNode->link = NULL;
 
     books *temp;
@@ -52,6 +47,7 @@ void insertAtEnd1(books **head, int d)
         }
         temp->link = newNode;
     }
+    return newNode;
 }
 
 int isEmpty(books *head)
@@ -61,40 +57,34 @@ int isEmpty(books *head)
     return 0;
 }
 
-// void initialize_lib(books ** ptr){
-//     books * head ;
-//     head = *ptr;
-//     insertAtEnd1(ptr,1);//Book 1
-//     head = *ptr;
-//     (head)->id = 10;
-//     strcpy((head)->bookName, "QWERTY");
-//     (head)->available = 4;
+void initialize_lib1(books ** ptr){
+    books *newNode;
 
-//     insertAtEnd1(ptr,2);// Book 2
-//      head = *ptr;
-//     (head)->id = 31;
-//     strcpy((head)->bookName, "ASDFG");
-//     (head)->available = 6;
+    newNode=insertAtEnd1(ptr,101);//Book 1
+    strcpy(newNode->bookName, "Mathematics");
+    newNode->available = 4;
+    newNode->issued = 0;
 
-//     insertAtEnd1(ptr,3);// Book 3
-//      head = *ptr;
-//     (head)->id = 15;
-//     strcpy((head)->bookName, "ZXCVB");
-//     (head)->available = 9;
+    newNode=insertAtEnd1(ptr,102);// Book 2
+    strcpy(newNode->bookName, "Life");
+    newNode->available = 6;
+    newNode->issued = 0;
 
-//     insertAtEnd1(ptr,4);// Book 4
-//      head = *ptr;
-//     (head)->id = 12;
-//     strcpy((head)->bookName, "POIUY");
-//     (head)->available = 4;
+    newNode=insertAtEnd1(ptr,103);// Book 3
+    strcpy(newNode->bookName, "Pschychology");
+    newNode->available = 9;
+    newNode->issued = 0;
 
-//     insertAtEnd1(ptr,5);// Book 5
-//      head = *ptr;
-//     (head)->id = 3;
-//     strcpy((head)->bookName, "MNBVC");
-//     (head)->available = 8;
-//     // *head = *ptr;
-// }
+    newNode=insertAtEnd1(ptr,104);// Book 4
+    strcpy(newNode->bookName, "Basic_C");
+    newNode->available = 4;
+    newNode->issued = 0;
+
+    newNode=insertAtEnd1(ptr,105);// Book 5
+    strcpy(newNode->bookName, "Logic_design");
+    newNode->available = 8;
+    newNode->issued = 0;
+}
 
 void display(books *head)
 {
@@ -140,7 +130,7 @@ void createNode(books **head1)
     }
 }
 
-void insertAtEnd(books **head, int d)
+void insertAtEnd(books **head)
 {
     books *newNode;
     createNode(&newNode);
@@ -150,7 +140,6 @@ void insertAtEnd(books **head, int d)
     }
     else
         printf("Book inserted.\n\n");
-    newNode->data = d;
     newNode->link = NULL;
 
     books *temp;
@@ -167,166 +156,4 @@ void insertAtEnd(books **head, int d)
         }
         temp->link = newNode;
     }
-}
-
-// Alternate void initialize_lib(books ** ptr)
-void initialize_lib(books **ptr)
-{
-    for (int i = 0; i < 3; i++)
-    {
-        insertAtEnd(ptr, 1);
-    }
-}
-
-void insertAtBeg(books **head, int d)
-{
-    books *newNode;
-    createNode(&newNode);
-    if (newNode == NULL)
-    {
-        printf("Cannot insert the BOOK at beginning\n");
-    }
-    else
-        printf("BOOK inserted at beginning\n");
-    newNode->link = *head;
-    *head = newNode;
-    newNode->data = d;
-}
-int deletefirst(books **head)
-{
-    int temp;
-    books *temp1 = *head;
-    if (isEmpty(*head))
-    {
-        printf("No elements in LIST to delete\n");
-        temp = -999;
-    }
-    else
-    {
-        temp = temp1->data;
-        *head = temp1->link;
-    }
-    free(temp1);
-    return temp;
-}
-int deletelast(books **head)
-{
-    int t;
-    books *temp = *head, *temp1;
-    if (isEmpty(*head))
-    {
-        printf("No elements in LIST to delete\n");
-        t = -999;
-    }
-    else if (temp->link == NULL)
-    {
-        *head = NULL;
-    }
-    else
-    {
-        while (temp->link->link != NULL)
-        {
-            temp = temp->link;
-        }
-        t = temp->link->data;
-        temp1 = temp->link;
-        temp->link = NULL;
-        free(temp1);
-    }
-    return t;
-}
-int length(struct books *head)
-{
-    struct books *temp = head;
-    int count = 0;
-    while (temp != NULL)
-    {
-        temp = temp->link;
-        count++;
-    }
-    return count;
-}
-void insertAtpos(struct books **head, int key, int pos)
-{
-    books *temp = *head;
-    books *newNode;
-    createNode(&newNode);
-    newNode->data = key;
-    if (pos == 1)
-    {
-        newNode->link = *head;
-        *head = newNode;
-    }
-    else if (pos > 1 && pos <= length(*head))
-    {
-        int count = pos - 2;
-        while (count--)
-        {
-            temp = temp->link;
-        }
-        newNode->link = temp->link;
-        temp->link = newNode;
-    }
-    else
-        printf("INVALID position\n");
-}
-int deletepos(books **head, int pos)
-{
-    books *temp = *head, *temp1;
-    int a;
-    if (pos == 1)
-    {
-        a = deletefirst(head);
-    }
-    else if (pos > 1 && pos < length(*head))
-    {
-        int count = pos - 2;
-        while (count--)
-        {
-            temp = temp->link;
-        }
-        temp1 = temp->link;
-        a = temp->link->data;
-        temp->link = temp->link->link;
-        free(temp1);
-    }
-    else
-        printf("Invalid position entered\n");
-    return a;
-}
-void reverse(books **head)
-{
-    books *rev, *ptr1, *ptr2;
-    if (length(*head) > 1)
-    {
-        rev = *head;
-        ptr1 = rev->link;
-        ptr2 = ptr1->link;
-        rev->link = NULL;
-        while (ptr2 != NULL)
-        {
-            ptr1->link = rev;
-            rev = ptr1;
-            ptr1 = ptr2;
-            ptr2 = ptr2->link;
-            ptr1->link = rev;
-        }
-        ptr1->link = rev;
-        *head = ptr1;
-    }
-}
-int search(books **head, int key)
-{
-    books *temp = *head;
-    int pos = 0;
-    while (temp != NULL)
-    {
-        pos++;
-        if (temp->data == key)
-        {
-            return pos;
-        }
-        temp = temp->link;
-    }
-    return -999;
 }

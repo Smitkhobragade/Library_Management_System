@@ -13,7 +13,7 @@ void createS(students **head)
 {
     *head = (students *)malloc(sizeof(students));
     if (*head == NULL)
-        printf("Unable to insert stuedent's data.\n");
+        printf("Unable to insert student's data.\n");
 }
 
 void addStd(students *a[], int id, char name[])
@@ -89,11 +89,6 @@ students *StdExists(students *a[], int id)
 int issueBook(students *a[], books **b, int id, int bookid)
 {
     students *temp = StdExists(a, id);
-    if ((*b)->available == 0)
-    {
-        printf("These book in not available in the library to be issued!!!\n");
-        return 0; // book is not available to be issued
-    }
     if (temp != NULL)
     {
         int j = 0;
@@ -114,10 +109,22 @@ int issueBook(students *a[], books **b, int id, int bookid)
                     break;
                 temp1 = temp1->link;
             }
+            if (temp1->id != bookid)
+            {
+                return -3;
+            }
             if (temp1->id == bookid)
             {
-                (temp1->available)--;
-                (temp1->issued)++;
+                if (temp1->available == 0)
+                {
+                    printf("Books Not Available \n");
+                    return -2;
+                }
+                else
+                {
+                    (temp1->available)--;
+                    (temp1->issued)++;
+                }
             }
             else
             {
