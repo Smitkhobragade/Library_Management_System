@@ -1,1 +1,0 @@
-insertAtEnd1(ptr,1)
