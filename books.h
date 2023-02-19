@@ -63,22 +63,27 @@ void initialize_lib1(books ** ptr){
     newNode=insertAtEnd1(ptr,101);//Book 1
     strcpy(newNode->bookName, "Mathematics");
     newNode->available = 4;
+    newNode->issued = 0;
 
     newNode=insertAtEnd1(ptr,102);// Book 2
     strcpy(newNode->bookName, "Life");
     newNode->available = 6;
+    newNode->issued = 0;
 
     newNode=insertAtEnd1(ptr,103);// Book 3
     strcpy(newNode->bookName, "Pschychology");
     newNode->available = 9;
+    newNode->issued = 0;
 
     newNode=insertAtEnd1(ptr,104);// Book 4
     strcpy(newNode->bookName, "Basic_C");
     newNode->available = 4;
+    newNode->issued = 0;
 
     newNode=insertAtEnd1(ptr,105);// Book 5
     strcpy(newNode->bookName, "Logic_design");
     newNode->available = 8;
+    newNode->issued = 0;
 }
 
 void display(books *head)

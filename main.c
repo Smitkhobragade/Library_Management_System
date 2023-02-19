@@ -46,7 +46,7 @@ int main()
     for (int j = 0; j < capacity; j++)
         std[j] = NULL;
 
-    printf("\n\n");
+    printf("\n");
     printf("****************************************\n");
     printf("*                                      *\n");
     printf("*                                      *\n");
